@@ -54,7 +54,7 @@ sr::SerialReader::~SerialReader(){
 
 size_t sr::SerialReader::readData(){
     ioctl(fd,TCFLSH,2);
-    usleep(200);
+    usleep(200);   
     int f = read(fd,buf,BUFLENGTH);
     if(f == -1){
         std::cout << "Failed to read";
@@ -72,8 +72,9 @@ size_t sr::SerialReader::writeData(char *data,int length){
     return f;
 }
 
-void sr::SerialReader::printBuf(){   
-    for (int i = 0; i < BUFLENGTH; ++i){
+void sr::SerialReader::printBuf(){  
+    for(int i = 0; i < BUFLENGTH; ++i){
         std::cout << buf[i];
-    }
+    } 
+    std::cout << std::endl;
 }

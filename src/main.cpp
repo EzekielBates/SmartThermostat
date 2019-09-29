@@ -5,11 +5,13 @@
 int main(){
     sr::SerialReader sr(PATH);
     if(sr.Init() == 0){
-        sr.readData();    
-        sr.printBuf();
-        sr.~SerialReader(); 
+        do{      
+            if(sr.readData() == 0);    
+                sr.printBuf();                            
+        }while(true);   
+        sr.~SerialReader();           
     }
     else{
-        printf("Something went wront.");
-    }
+        printf("Something went wrong.");
+    }   
 }
