@@ -4,12 +4,9 @@
 
 int main(){
     sr::SerialReader sr(PATH);
-    if(sr.Init() == 0){
-        do{      
-            if(sr.readData() == 0);    
-                sr.printBuf();                            
-        }while(true);   
-        sr.~SerialReader();           
+    if(sr.Init() == 0){              
+        std::cout << sr.writeData("H87;",5);                                           
+          
     }
     else{
         printf("Something went wrong.");
